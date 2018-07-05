@@ -2,10 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const allRouter = require("./routes/allRouter");
 const otherRouter = require("./routes/otherRouter");
+const swaggerUi = require("swagger-ui-express")
+const swaggerDocument = require("./swagger-sample.json")
 
 const app = express();
 app.use(bodyParser());
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve,
+swaggerUi.setup(swaggerDocument))
 
 app.get("/", (req, res) => {
   res.json("Welcome to Data.gov.sg Dataset Listing");

@@ -6,20 +6,11 @@ router.get("/", (req, res) => {
   res.json(data);
 });
 
-// kiv - filter not working, to change to nested filter + next not going to err 404
-
 router.get("/search", (req, res, next) => {
-  var filteredData = data;
-  filteredData = filteredData.filter(
-    data =>
-      req.query.format &&
-      data.resource_format === req.query.format.toUpperCase()
-  );
-  filteredData = filteredData.filter(
-    data => req.query.freq && data.frequency === req.query.freq
-  );
-  // kiv .includes not working --> data not matching
-  // filteredData = filteredData.filter(data => req.query.name && data.dataset_name.includes(req.query.name));
+  const filteredData = data
+  .filter(data => (req.query.format ? data.resource_format === req.query.format.toUpperCase() : true))
+  .filter(data => (req.query.freq ? data.frequency === req.query.freq : true))
+  .filter(data => (req.query.name ? data.dataset_name.includes(req.query.name) : true))
   filteredData.length === 0 ? next() : res.json(filteredData);
 });
 
