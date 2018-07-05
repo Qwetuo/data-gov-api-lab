@@ -58,11 +58,15 @@ test("GET /all/search?format=xxx&freq=yyy should return datasets with xxx format
   expect(response.body[0]).toHaveProperty("frequency", `${freq}`);
 });
 
-test("GET /all/search?name=zzz should return datasets which includes dataset_name zzz", async () => {
-  const name = "Bus";
-  const response = await request(app).get(`/all/search?name=${name}`);
+test("GET /all/search?name=zzz&org=aaa should return datasets which comes from aaa and includes dataset_name zzz", async () => {
+  const org = "Health Promotion Board"
+  const name = "Age";
+  const response = await request(app).get(`/all/search?name=${name}&org=${org}`);
   expect(response.status).toEqual(200);
   expect(response.body[0].dataset_name).toEqual(
     expect.stringContaining(`${name}`)
+  );
+  expect(response.body[0].organisation).toEqual(
+    expect.stringContaining(`${org}`)
   );
 });
