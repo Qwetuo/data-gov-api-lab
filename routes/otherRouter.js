@@ -8,12 +8,12 @@ router.get("/format/:format", (req, res, next) => {
   const formatData = data.filter(
     data => data.resource_format === req.params.format.toUpperCase()
   );
-  res.json(formatData.length === 0 ? next() : formatData);
+  formatData.length === 0 ? next() : res.json(formatData)
 });
 
 router.get("/freq/:freq", (req, res, next) => {
   const freqData = data.filter(data => data.frequency === req.params.freq);
-  res.json(freqData.length === 0 ? next() : freqData);
+  freqData.length === 0 ? next() : res.json(freqData)
 });
 
 module.exports = router;

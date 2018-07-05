@@ -20,7 +20,7 @@ router.get("/search", (req, res, next) => {
   );
   // kiv .includes not working --> data not matching
   // filteredData = filteredData.filter(data => req.query.name && data.dataset_name.includes(req.query.name));
-  res.json(filteredData.length === 0 ? next() : filteredData);
+  filteredData.length === 0 ? next() : res.json(filteredData);
 });
 
 module.exports = router;
