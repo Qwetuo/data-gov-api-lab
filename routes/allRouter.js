@@ -6,6 +6,13 @@ router.get("/", (req, res) => {
   res.json(data);
 });
 
+router.post("/", (req,res) => {
+  data = [...data, req.body];
+  res.json("Added successfully")
+})
+
+
+
 router.get("/search", (req, res, next) => {
   const filteredData = data
   .filter(data => (req.query.format ? data.resource_format === req.query.format.toUpperCase() : true))

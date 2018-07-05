@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const allRouter = require("./routes/allRouter");
 const otherRouter = require("./routes/otherRouter");
+const playRouter = require("./routes/playRouter")
 const swaggerUi = require("swagger-ui-express")
 const swaggerDocument = require("./swagger-sample.json")
 
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 
 app.use("/all", allRouter);
 app.use("/", otherRouter);
+app.use("/play" ,playRouter)
 
 app.use(function(req, res, next) {
   res.status(404).json("Not found!");

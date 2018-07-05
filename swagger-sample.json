@@ -58,9 +58,10 @@
             "name": "format",
             "in": "query",
             "required": false,
-            "description": "The format of the dataset to retrieve. Use one of these: API, CSV, KML, PDF, SHP",
+            "description": "The format of the dataset to retrieve.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["API", "CSV", "KML", "PDF", "SHP"]
             }
           },
           {
@@ -69,7 +70,8 @@
             "required": false,
             "description": "The update frequency of the dataset to retrieve. Use one of these: Adhoc, Annual, Daily, Half Year, Monthly, Other, Quarterly, Realtime, Weekly",
             "schema": {
-              "type": "string"            
+              "type": "string",
+              "enum": ["Adhoc", "Annual", "Daily", "Half Year", "Monthly", "Other", "Quarterly", "Realtime", "Weekly"]            
           }
           },
           {
@@ -124,9 +126,10 @@
             "name": "format",
             "in": "path",
             "required": true,
-            "description": "The format of the dataset to retrieve. Use one of these: API, CSV, KML, PDF, SHP",
+            "description": "The format of the dataset to retrieve.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["API", "CSV", "KML", "PDF", "SHP"]
             }
           }
         ],
@@ -172,9 +175,11 @@
             "name": "freq",
             "in": "path",
             "required": true,
-            "description": "The frequency of the dataset to retrieve: Use one of these: Adhoc, Annual, Daily, Half Year, Monthly, Other, Quarterly, Realtime, Weekly",
+            "description": "The frequency of the dataset to retrieve.",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "enum": ["Adhoc", "Annual", "Daily", "Half Year", "Monthly", "Other", "Quarterly", "Realtime", "Weekly"]   
+              
             }
           }
         ],
