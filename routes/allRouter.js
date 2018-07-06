@@ -6,10 +6,11 @@ router.get("/", (req, res) => {
   res.json(data);
 });
 
-router.post("/", (req,res) => {
-  data = [...data, req.body];
-  res.json("Added successfully")
-})
+// NOT WORKING!!!
+// router.post("/", (req,res) => {
+//   data = [...data, req.body];
+//   res.json("Added successfully")
+// })
 
 
 
